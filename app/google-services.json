@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "500284382388",
+    "project_id": "baller-app-678bf",
+    "storage_bucket": "baller-app-678bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:500284382388:android:0f9afad41b005744ab0be1",
+        "android_client_info": {
+          "package_name": "com.example.baller_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "500284382388-r7reu36kelo90p3mlu1betos9359me39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0IolI9_7t8iksgB2CqGrQlBTu7MQItiY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "500284382388-r7reu36kelo90p3mlu1betos9359me39.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
