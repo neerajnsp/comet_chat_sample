@@ -78,15 +78,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
+
     <com.cometchat.pro.uikit.ui_components.shared.cometchatGroups.CometChatGroups
         android:id="@+id/rv_group_list"
-        android:background="#ffff"
-        android:layout_marginHorizontal="15dp"
-        android:layout_below="@+id/searchBar_vw"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/group_list_item"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        android:layout_below="@+id/searchBar_vw"
+        android:layout_marginHorizontal="15dp"
+        android:background="#ffff"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/group_list_item" />
     <ImageView
         android:clickable="true"
         android:id="@+id/create_group"

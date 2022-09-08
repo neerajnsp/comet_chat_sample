@@ -24,15 +24,16 @@
                 android:id="@+id/conversationView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <com.cometchat.pro.uikit.ui_components.shared.cometchatAvatar.CometChatAvatar
                     android:id="@+id/av_user"
                     android:layout_width="40dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="4dp"
-                    tools:src="@tools:sample/avatars"
-                    android:layout_height="40dp" />
+                    tools:src="@tools:sample/avatars" />
                 <com.cometchat.pro.uikit.ui_components.shared.cometchatUserPresence.CometChatUserPresence
                     android:layout_width="16dp"
                     android:visibility="gone"
@@ -67,48 +68,47 @@
                         android:id="@+id/txt_user_message"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:textSize="@dimen/fourteen"
-                        android:layout_marginStart="8dp"
                         android:layout_below="@id/txt_user_name"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="16dp"
                         android:ellipsize="marquee"
-                        tools:text="@string/online"
+                        android:singleLine="true"
+                        android:textSize="@dimen/fourteen"
                         android:visibility="visible"
-                        android:singleLine="true" />
+                        tools:text="@string/online" />
                 </RelativeLayout>
-
 
                 <TextView
                     android:id="@+id/tvSeprator"
                     android:layout_width="match_parent"
-                    android:layout_toEndOf="@id/av_user"
-                    android:background="@color/light_grey"
+                    android:layout_height="2dp"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginEnd="16dp"
-                    android:layout_height="0.8dp"/>
+                    android:layout_marginTop="8dp"
+                    android:background="#E4EBF0" />
 
                 <TextView
-                    android:visibility="visible"
-                    tools:visibility="visible"
                     android:id="@+id/messageTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/rl_name_and_status_layout"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="16dp"
                     android:textSize="12sp"
-                    android:layout_alignTop="@id/rl_name_and_status_layout"
+                    android:visibility="visible"
                     tools:text="11:50"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <com.cometchat.pro.uikit.ui_components.shared.cometchatBadgeCount.CometChatBadgeCount
-                        tools:visibility="visible"
-                        android:layout_alignParentEnd="true"
-                        android:layout_below="@id/messageTime"
-                        android:id="@+id/messageCount"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginTop="4dp"
+                    tools:visibility="visible" />
 
-                        android:textColor="@color/textColorWhite"
-                        android:layout_height="wrap_content"/>
+                <com.cometchat.pro.uikit.ui_components.shared.cometchatBadgeCount.CometChatBadgeCount
+                    android:id="@+id/messageCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/messageTime"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+
+                    android:textColor="@color/textColorWhite"
+                    tools:visibility="visible" />
 
             </RelativeLayout>
 

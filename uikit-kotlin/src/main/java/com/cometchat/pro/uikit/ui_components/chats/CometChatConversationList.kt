@@ -27,6 +27,7 @@ import com.cometchat.pro.exceptions.CometChatException
 import com.cometchat.pro.helpers.CometChatHelper
 import com.cometchat.pro.models.*
 import com.cometchat.pro.uikit.R
+import com.cometchat.pro.uikit.ui_components.groups.create_group.CometChatCreateGroupActivity
 import com.cometchat.pro.uikit.ui_components.shared.cometchatConversations.CometChatConversation
 import com.cometchat.pro.uikit.ui_resources.utils.ErrorMessagesUtils
 import com.facebook.shimmer.ShimmerFrameLayout
@@ -65,6 +66,7 @@ class CometChatConversationList : Fragment(), TextWatcher {
     private var conversation : Conversation? = null
     private var conversationList: MutableList<Conversation> = ArrayList()
     private var ivStartConversation: ImageView? = null
+    private var ivCreateGroup: ImageView? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -78,6 +80,8 @@ class CometChatConversationList : Fragment(), TextWatcher {
         rlSearchBox = vw?.findViewById(R.id.rl_search_box)
         conversationShimmer = vw?.findViewById(R.id.shimmer_layout)
         clearSearch = vw?.findViewById(R.id.clear_search)
+        ivCreateGroup = vw?.findViewById(R.id.create_group)
+        if (FeatureRestriction.isGroupCreationEnabled()) ivCreateGroup?.visibility = View.VISIBLE else ivCreateGroup?.visibility = View.GONE
         ivStartConversation = vw?.findViewById(R.id.iv_start_conversation)
         if (!FeatureRestriction.isChatSearchEnabled()) {
             searchEdit?.visibility = View.GONE
@@ -104,7 +108,10 @@ class CometChatConversationList : Fragment(), TextWatcher {
             // Hide the soft keyboard
             inputMethodManager.hideSoftInputFromWindow(searchEdit?.windowToken, 0)
         }
-
+        ivCreateGroup?.setOnClickListener(View.OnClickListener { view1: View? ->
+            val intent: Intent = Intent(context, CometChatCreateGroupActivity::class.java)
+            startActivity(intent)
+        })
         // Uses to fetch next list of conversations if rvConversationList (RecyclerView) is scrolled in upward direction.
         rvConversation?.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
@@ -123,7 +130,7 @@ class CometChatConversationList : Fragment(), TextWatcher {
                     events.OnItemClick(t as Conversation, position)
             }
         })
-
+//for delete conversatins
         val swipeHelper: RecyclerViewSwipeListener = object : RecyclerViewSwipeListener(context) {
             override fun instantiateUnderlayButton(
                 viewHolder: RecyclerView.ViewHolder?,
@@ -222,6 +229,7 @@ class CometChatConversationList : Fragment(), TextWatcher {
      * @see ConversationsRequest
      */
     private fun makeConversationList() {
+        startShimmer()
         if (conversationsRequest == null) {
             conversationsRequest = ConversationsRequestBuilder().setConversationType(UIKitSettings.conversationInMode.toString()).setLimit(50).build()
 
@@ -266,6 +274,13 @@ class CometChatConversationList : Fragment(), TextWatcher {
         conversationShimmer?.visibility = View.GONE
         tvTitle?.visibility = View.VISIBLE
         rlSearchBox?.visibility = View.VISIBLE
+    }
+
+    private fun startShimmer() {
+        conversationShimmer?.startShimmer()
+        conversationShimmer?.visibility = View.VISIBLE
+        tvTitle?.visibility = View.GONE
+        rlSearchBox?.visibility = View.GONE
     }
 
     /**

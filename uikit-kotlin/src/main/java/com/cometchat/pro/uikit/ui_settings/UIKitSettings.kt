@@ -47,8 +47,8 @@ class UIKitSettings(context: Context) {
         var passwordGroup: Boolean = true
         var users: Boolean = false
         var calls: Boolean = false
-        var groups: Boolean = true
-        var conversations: Boolean = false
+        var groups: Boolean = false
+        var conversations: Boolean = true
         var userSettings: Boolean = false
         var showUserPresence = true
         var sendTypingIndicator: Boolean = true

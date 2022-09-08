@@ -141,8 +141,11 @@ class CometChatConversationsAdapter(context: Context?) : RecyclerView.Adapter<Co
         if (!unreadCountEnabled) {
             conversationViewHolder.conversationListRowBinding.messageCount.visibility = View.GONE
             conversationViewHolder.conversationListRowBinding.messageCount.setCount(0)
-        } else
+            conversationViewHolder.conversationListRowBinding.txtUserMessage.setTextColor(context!!.resources.getColor(R.color.gray_Color))
+        } else {
             conversationViewHolder.conversationListRowBinding.messageCount.setCount(conversation.unreadMessageCount)
+            conversationViewHolder.conversationListRowBinding.txtUserMessage.setTextColor(context!!.resources.getColor(R.color.primaryTextColor))
+        }
         conversationViewHolder.conversationListRowBinding.txtUserName.text = name
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 //            conversationViewHolder.conversationListRowBinding.avUser.setBackgroundColor(context!!.resources.getColor(R.color.colorPrimary, context!!.theme))
